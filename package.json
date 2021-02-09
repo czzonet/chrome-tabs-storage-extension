@@ -1,0 +1,35 @@
+{
+  "name": "chrome-tabs-storage-extension",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "author": {
+    "name": "czzonet",
+    "email": "czzonet@163.com"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack serve --config ./build/webpack.dev.js",
+    "build": "webpack --config ./build/webpack.dev.js"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.4.0",
+    "antd": "^4.10.0",
+    "css-loader": "^5.0.1",
+    "less-loader": "^7.2.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "style-loader": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "cross-env": "^7.0.3",
+    "html-webpack-plugin": "^4.5.1",
+    "less": "^4.1.0",
+    "ts-loader": "^8.0.14",
+    "typescript": "^4.1.3",
+    "webpack": "^5.12.2",
+    "webpack-cli": "^4.3.1",
+    "webpack-dev-server": "^3.11.1"
+  }
+}
