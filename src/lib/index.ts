@@ -29,13 +29,13 @@ export const getWindowTabs = async () => {
 
 /** 存储标签页 */
 export const setStoreTabs = async (tabStore: TabStore[]) => {
-  chrome.storage.sync.set({ tabStore });
+  chrome.storage.local.set({ tabStore });
 };
 
 /** 读取存储的标签页 */
 export const getStoreTabs = async () => {
   return new Promise<TabStore[]>((resolve, reject) => {
-    chrome.storage.sync.get("tabStore", (data) => {
+    chrome.storage.local.get("tabStore", (data) => {
       console.log("Store", data);
       const { tabStore } = data;
 
