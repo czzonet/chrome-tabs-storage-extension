@@ -9,7 +9,7 @@ import {
   setStoreTabs,
 } from "../../lib";
 import { TableTab } from "../TableTab/TableTab";
-import style from "./TabBarStyle.less";
+import style from "./TabBarStyle.scss";
 
 export function TabBar() {
   const [tabStores, setTabStores] = useState([] as TabStore[]);
