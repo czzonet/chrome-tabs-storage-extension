@@ -5,4 +5,4 @@ import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 
 console.log("app start.");
 
-ReactDom.render(App(), document.getElementById("app"));
+ReactDom.render(<App></App>, document.getElementById("app"));
