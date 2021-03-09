@@ -1,25 +1,22 @@
 {
-  "name": "Getting Started Example",
-  "description": "Build an Extension!",
+  "name": "Chrome Tabs Storage Extension",
+  "description": "一款可以保存当前所有标签页并可以在需要时恢复打开保存的标签页的 Chrome 插件扩展。",
   "version": "1.0",
   "manifest_version": 3,
-  "background": {
-    "service_worker": "background.js"
-  },
-  "permissions": ["storage", "unlimitedStorage", "tabs", "scripting"],
+  "permissions": ["storage", "unlimitedStorage", "tabs"],
   "action": {
-    "default_popup": "/dist/index.html",
+    "default_popup": "/index.html",
     "default_icons": {
-      "16": "/resources/icon.png",
-      "32": "/resources/icon.png",
-      "48": "/resources/icon.png",
-      "128": "/resources/icon.png"
+      "16": "/assets/icon.png",
+      "32": "/assets/icon.png",
+      "48": "/assets/icon.png",
+      "128": "/assets/icon.png"
     }
   },
   "icons": {
-    "16": "/resources/icon.png",
-    "32": "/resources/icon.png",
-    "48": "/resources/icon.png",
-    "128": "/resources/icon.png"
+    "16": "/assets/icon.png",
+    "32": "/assets/icon.png",
+    "48": "/assets/icon.png",
+    "128": "/assets/icon.png"
   }
 }
