@@ -10,6 +10,7 @@ import {
 } from "../../lib";
 import { TableTab } from "../TableTab/TableTab";
 import style from "./TabBarStyle.scss";
+import moment from "moment";
 
 export function TabBar() {
   const [tabStores, setTabStores] = useState([] as TabStore[]);
@@ -86,6 +87,16 @@ export function TabBar() {
     tabStores ? setTabStores(tabStores) : null;
   };
 
+  /** 格式化日期 */
+  const formatDate = (date: number) => {
+    moment.locale("zh_CN");
+    const t = moment(date);
+
+    const res = t.fromNow() + " -- " + t.format("YYYY/MM/DD HH:mm:ss");
+
+    return res;
+  };
+
   useEffect(() => {
     handleEffect()
       .then()
@@ -113,7 +124,7 @@ export function TabBar() {
       {tabStores.map((tabStore, i) => {
         return (
           <div key={i} className={style["cards"]}>
-            <Card title={new Date(tabStore.date).toLocaleString()}>
+            <Card title={formatDate(tabStore.date)}>
               <div className={style.title}>
                 <div> {tabStore.count + "个标签页"}</div>
                 <div>
