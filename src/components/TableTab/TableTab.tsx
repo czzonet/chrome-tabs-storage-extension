@@ -12,6 +12,7 @@ export const TableTab = (props) => {
       dataIndex: "title",
       key: "title",
       render: (text) => text || "",
+      ellipsis: true,
     },
     {
       title: "地址",
@@ -34,7 +35,9 @@ export const TableTab = (props) => {
     <Table
       columns={columns}
       dataSource={dataSource}
-      scroll={{ y: 400 }}
+      // scroll={{ y: 400 }}
+      size="small"
+      pagination={{ defaultPageSize: 5 }}
     ></Table>
   );
 };

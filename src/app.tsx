@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./app.less";
+import style from "./app.scss";
 import { TabBar } from "./components/TabBar/TabBar";
 
 export function App() {
