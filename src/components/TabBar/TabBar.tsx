@@ -10,6 +10,7 @@ import {
 } from "../../lib";
 import { TableTab } from "../TableTab/TableTab";
 import style from "./TabBarStyle.scss";
+import moment from "moment";
 
 export function TabBar() {
   const [tabStores, setTabStores] = useState([] as TabStore[]);
@@ -54,15 +55,23 @@ export function TabBar() {
   };
 
   /** 从存储里读取并打开标签页 */
-  const handleReopenTabsFromTabStore = async () => {
+  const handleReopenTabsFromTabStore = async (date: number) => {
     /** 读取存储 */
     const tabStores: TabStore[] = await getStoreTabs();
 
     if (tabStores) {
-      /** 打开标签页 */
-      tabStores[0]?.tabs.forEach((tab) => {
-        createTab(tab.url);
-      });
+      const index = tabStores.findIndex((d) => d.date == date);
+
+      if (index !== -1) {
+        /** 打开标签页 */
+        tabStores[index].tabs.forEach((tab) => {
+          createTab(tab.url);
+        });
+      } else {
+        console.warn("The selected index of tabStores not found!");
+      }
+    } else {
+      console.warn("The tabStores not found!");
     }
   };
 
@@ -84,6 +93,16 @@ export function TabBar() {
     console.log("tabStores", tabStores);
     // tabStores ? setTabs(tabStores[0]?.tabs || []) : null;
     tabStores ? setTabStores(tabStores) : null;
+  };
+
+  /** 格式化日期 */
+  const formatDate = (date: number) => {
+    moment.locale("zh_CN");
+    const t = moment(date);
+
+    const res = t.fromNow() + " -- " + t.format("YYYY/MM/DD HH:mm:ss");
+
+    return res;
   };
 
   useEffect(() => {
@@ -113,7 +132,7 @@ export function TabBar() {
       {tabStores.map((tabStore, i) => {
         return (
           <div key={i} className={style["cards"]}>
-            <Card title={new Date(tabStore.date).toLocaleString()}>
+            <Card title={formatDate(tabStore.date)}>
               <div className={style.title}>
                 <div> {tabStore.count + "个标签页"}</div>
                 <div>
@@ -124,7 +143,10 @@ export function TabBar() {
                     删除
                   </Button>
 
-                  <Button onClick={handleReopenTabsFromTabStore} type="primary">
+                  <Button
+                    onClick={() => handleReopenTabsFromTabStore(tabStore.date)}
+                    type="primary"
+                  >
                     恢复
                   </Button>
                 </div>
